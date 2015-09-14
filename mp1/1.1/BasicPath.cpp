@@ -35,12 +35,13 @@ int Graph::DFS(node* r) {
 }
 
 int Graph::BFS(node* r) {
-	std::queue<node>width;
+	//assume the node r is a valid node.
+	std::queue<node> width;
 	width.push(r);
 	while(!width.empty())
 	{
 		auto foot=depth.front();
-		depth.pop();
+		depth.pop_front();
 		if(foot->data==3)
 		{
 			std::cout<<"end with the goal!"std::endl;
@@ -50,16 +51,16 @@ int Graph::BFS(node* r) {
 		foot->data==2;
 		
 		if(foot->up&&foot->up->data==1)
-		width.push(foot->up);
+		width.push_back(foot->up);
 		
 		if(foot->right&&foot->right->data==1)
-		width.push(foot->right);
+		width.push_back(foot->right);
 		
 		if(foot->down&&foot->down->data==1)
-		width.push(foot->down);
+		width.push_back(foot->down);
 		
 		if(foot->left&&foot->left->data==1)
-  		width.push(foot->left);
+  		width.push_back(foot->left);
 
 }
 
